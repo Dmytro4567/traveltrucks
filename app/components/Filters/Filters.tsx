@@ -19,7 +19,6 @@ export default function Filters() {
         void setFilters((p) => ({...p, features: {...p.features, [key]: !p.features[key]}}));
     };
 
-
     return (
         <aside className={styles.wrapper}>
             <div className={styles.box}>
@@ -27,20 +26,20 @@ export default function Filters() {
                 <input name="location" value={filters.location} placeholder="Ukraine, Kyiv" onChange={onChangeInput}/>
             </div>
 
-
             <div className={styles.box}>
                 <div className={styles.subTitle}>Vehicle type</div>
                 <div className={styles.pills}>
-                    {['alcove', 'panelTruck', 'fullyIntegrated'].map((f) => (
+                    {(['alcove', 'panelTruck', 'fullyIntegrated'] as BodyType[]).map((f) => (
                         <button key={f} className={filters.form === f ? styles.pillActive : styles.pill}
-                                onClick={() => onSelectForm(f as any)}>{f}</button>
+                                onClick={() => onSelectForm(f)}>
+                            {f}
+                        </button>
                     ))}
                     <button className={!filters.form ? styles.pillActive : styles.pill}
-                            onClick={() => onSelectForm('' as any)}>any
+                            onClick={() => onSelectForm('')}>any
                     </button>
                 </div>
             </div>
-
 
             <div className={styles.box}>
                 <div className={styles.subTitle}>Vehicle equipment</div>
@@ -52,7 +51,6 @@ export default function Filters() {
                     ))}
                 </div>
             </div>
-
 
             <button className={styles.searchBtn} onClick={() => resetAndFetch()}>Search</button>
         </aside>
