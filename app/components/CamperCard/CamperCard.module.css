@@ -1,0 +1,93 @@
+.card {
+    display: grid;
+    grid-template-columns:280px 1fr;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #fff
+}
+
+.media {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f2f4f7
+}
+
+.media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px
+}
+
+.header h3 {
+    margin: 0;
+    font-size: 20px
+}
+
+.price {
+    font-weight: 700
+}
+
+.meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px
+}
+
+.desc {
+    margin: 0;
+    color: #344054;
+    line-height: 1.5;
+    max-height: 3.1em;
+    overflow: hidden
+}
+
+.actions {
+    margin-top: auto;
+    display: flex;
+    gap: 12px;
+    align-items: center
+}
+
+.favBtn {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #fff
+}
+
+.favBtn[aria-pressed="true"] {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: #FFF5F5
+}
+
+.more {
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: var(--primary);
+    color: #fff;
+    border: 1px solid var(--primary)
+}
+
+.more:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover)
+}

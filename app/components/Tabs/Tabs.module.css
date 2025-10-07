@@ -1,0 +1,31 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.tabs {
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid var(--border)
+}
+
+.tabs > button {
+    padding: 10px 12px;
+    border: 0;
+    background: transparent;
+    border-bottom: 2px solid transparent
+}
+
+.tabs > button:hover {
+    color: var(--primary)
+}
+
+.active {
+    color: var(--primary) !important;
+    border-bottom-color: var(--primary) !important
+}
+
+.panel {
+    padding-top: 8px
+}

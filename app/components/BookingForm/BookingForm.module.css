@@ -1,0 +1,52 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #fff
+}
+
+.form h3 {
+    margin: 0 0 4px
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px
+}
+
+.form input, .form textarea {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none
+}
+
+.form textarea {
+    min-height: 96px;
+    resize: vertical
+}
+
+.form button {
+    margin-top: 6px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--primary);
+    color: #fff;
+    border: 1px solid var(--primary)
+}
+
+.form button:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover)
+}
+
+.ok {
+    margin: 6px 0 0;
+    color: #067647;
+    font-weight: 600
+}

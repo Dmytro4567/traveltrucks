@@ -1,0 +1,50 @@
+.wrap {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto
+}
+
+.title {
+    margin: 0 0 8px
+}
+
+.location {
+    opacity: .8;
+    margin-bottom: 16px
+}
+
+.price {
+    font-weight: 600;
+    margin-bottom: 24px
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 24px
+}
+
+.galleryImg {
+    object-fit: cover;
+    width: 100%;
+    height: 200px
+}
+
+.desc {
+    margin: 0 0 24px
+}
+
+.content {
+    display: grid;
+    grid-template-columns:2fr 1fr;
+    gap: 24px
+}
+
+.reviewItem {
+    margin-bottom: 12px
+}
+
+.reviewAuthor {
+    font-weight: 600
+}
