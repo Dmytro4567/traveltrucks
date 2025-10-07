@@ -1,9 +1,11 @@
+// REPLACE FILE
 import Image from 'next/image';
 import Tabs from '@/app/components/Tabs/Tabs';
 import BookingForm from '@/app/components/BookingForm/BookingForm';
 import {fetchCamperById} from '@/lib/api';
 import {priceToUi, splitLocation} from '@/lib/format';
 import styles from './CamperDetails.module.css';
+import type {GalleryItem, Review} from '@/lib/types';
 
 export default async function CamperDetails({params}: { params: { id: string } }) {
     const camper = await fetchCamperById(params.id);
@@ -15,9 +17,8 @@ export default async function CamperDetails({params}: { params: { id: string } }
             <div className={styles.location}>{city}, {country}</div>
             <div className={styles.price}>€{priceToUi(camper.price)}</div>
 
-            {/* Галерея */}
             <div className={styles.gallery}>
-                {(camper.gallery ?? []).slice(0, 4).map((g: any, i: number) => (
+                {(camper.gallery ?? []).slice(0, 4).map((g: GalleryItem, i: number) => (
                     <Image key={i} src={g.thumb} alt={`${camper.name} ${i + 1}`} width={280} height={200}
                            className={styles.galleryImg}/>
                 ))}
@@ -33,10 +34,8 @@ export default async function CamperDetails({params}: { params: { id: string } }
                             <ul>
                                 {['transmission', 'engine', 'AC', 'bathroom', 'kitchen', 'TV', 'radio', 'refrigerator', 'microwave', 'gas', 'water', 'form', 'length', 'width', 'height', 'tank', 'consumption']
                                     .filter((k) => camper[k as keyof typeof camper] !== undefined)
-                                    .map((k) => (
-                                        <li key={k}><strong>{k}</strong>: {String(camper[k as keyof typeof camper])}
-                                        </li>
-                                    ))}
+                                    .map((k) => <li key={k}>
+                                        <strong>{k}</strong>: {String(camper[k as keyof typeof camper])}</li>)}
                             </ul>
                         </div>
                     }
@@ -44,7 +43,7 @@ export default async function CamperDetails({params}: { params: { id: string } }
                         <div>
                             <h3>Reviews</h3>
                             <ul>
-                                {(camper.reviews ?? []).map((r: any, i: number) => (
+                                {(camper.reviews ?? []).map((r: Review, i: number) => (
                                     <li key={i} className={styles.reviewItem}>
                                         <div className={styles.reviewAuthor}>{r.reviewer_name}</div>
                                         <div>Rating: {r.reviewer_rating} / 5</div>
@@ -55,7 +54,6 @@ export default async function CamperDetails({params}: { params: { id: string } }
                         </div>
                     }
                 />
-
                 <BookingForm camperName={camper.name}/>
             </div>
         </div>

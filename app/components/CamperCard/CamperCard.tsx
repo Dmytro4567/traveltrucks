@@ -1,20 +1,29 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './CamperCard.module.css';
 import {Camper} from '@/lib/types';
 import RatingStars from '@/app/components/RatingStars/RatingStars';
 import {priceToUi, splitLocation} from '@/lib/format';
 import {useCampersStore} from '@/store/useCampersStore';
 
-
 export default function CamperCard({item}: { item: Camper }) {
     const {toggleFavorite, favorites} = useCampersStore();
     const fav = favorites.includes(item.id);
     const {city, country} = splitLocation(item.location);
+    const cover = item.gallery?.[0]?.thumb || '/images/placeholder.jpg';
+
     return (
         <article className={styles.card}>
             <div className={styles.media}>
-                <img src={item.gallery?.[0]?.thumb || '/images/placeholder.jpg'} alt={item.name}/>
+                <Image
+                    src={cover}
+                    alt={item.name}
+                    fill
+                    className={styles.img}
+                    sizes="(max-width: 1024px) 100vw, 280px"
+                    priority={false}
+                />
             </div>
             <div className={styles.body}>
                 <header className={styles.header}>

@@ -1,24 +1,21 @@
 'use client';
 import styles from './Filters.module.css';
 import {useCampersStore} from '@/store/useCampersStore';
-
+import type {BodyType, FiltersState} from '@/lib/types';
 
 export default function Filters() {
     const {filters, setFilters, resetAndFetch} = useCampersStore();
 
-
     const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
-        void setFilters((prev) => ({...prev, [name]: value}));
+        void setFilters((prev) => ({...prev, [name]: value} as FiltersState));
     };
 
-
-    const onSelectForm = (form: typeof filters.form) => {
+    const onSelectForm = (form: BodyType) => {
         void setFilters((p) => ({...p, form}));
     };
 
-
-    const onToggleFeat = (key: keyof typeof filters.features) => {
+    const onToggleFeat = (key: keyof FiltersState['features']) => {
         void setFilters((p) => ({...p, features: {...p.features, [key]: !p.features[key]}}));
     };
 
