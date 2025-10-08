@@ -1,6 +1,7 @@
 'use client';
 import styles from './BookingForm.module.css';
 import {useState} from 'react';
+import Button from "@/app/components/ui/Button/Button";
 
 
 export default function BookingForm({camperName}: { camperName: string }) {
@@ -30,7 +31,7 @@ export default function BookingForm({camperName}: { camperName: string }) {
             <label>Booking date<input type="date" value={date} onChange={e => setDate(e.target.value)}
                                       required/></label>
             <label>Comment<textarea value={note} onChange={e => setNote(e.target.value)}/></label>
-            <button type="submit">Send</button>
+            <Button type="submit">Send</Button>
             {ok && <p className={styles.ok}>{ok}</p>}
         </form>
     );

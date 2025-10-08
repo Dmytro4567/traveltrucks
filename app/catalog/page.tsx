@@ -5,6 +5,7 @@ import CamperCard from '@/app/components/CamperCard/CamperCard';
 import Loader from '@/app/components/Loader/Loader';
 import {useCampersStore} from '@/store/useCampersStore';
 import styles from './Catalog.module.css';
+import Button from "@/app/components/ui/Button/Button";
 
 export default function CatalogPage() {
     const {items, total, isLoading, error, loadMore, resetAndFetch, hydrateFavorites} = useCampersStore();
@@ -26,7 +27,7 @@ export default function CatalogPage() {
                 </div>
                 <div className={styles.loadMoreWrap}>
                     {items.length < total && (
-                        <button onClick={() => loadMore()}>Load more</button>
+                        <Button variant="outline" onClick={() => loadMore()}>Load more</Button>
                     )}
                 </div>
             </section>

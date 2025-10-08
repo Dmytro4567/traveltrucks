@@ -1,5 +1,6 @@
 import styles from './Banner.module.css';
 import Link from 'next/link';
+import Button from "@/app/components/ui/Button/Button";
 
 
 export default function Banner() {
@@ -8,7 +9,7 @@ export default function Banner() {
             <div className={styles.content}>
                 <h1>Campers of your dreams</h1>
                 <p>You can find anything you want in our catalog</p>
-                <Link href="/catalog" className={styles.cta}>View Now</Link>
+                <Button href="/catalog">View Now</Button>
             </div>
         </section>
     );

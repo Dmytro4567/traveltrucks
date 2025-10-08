@@ -2,6 +2,7 @@
 import styles from './Filters.module.css';
 import {useCampersStore} from '@/store/useCampersStore';
 import type {BodyType, FiltersState} from '@/lib/types';
+import Button from '@/app/components/ui/Button/Button';
 
 export default function Filters() {
     const {filters, setFilters, resetAndFetch} = useCampersStore();
@@ -52,7 +53,7 @@ export default function Filters() {
                 </div>
             </div>
 
-            <button className={styles.searchBtn} onClick={() => resetAndFetch()}>Search</button>
+            <Button onClick={() => resetAndFetch()}>Search</Button>
         </aside>
     );
 }

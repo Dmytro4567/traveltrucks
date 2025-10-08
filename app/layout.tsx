@@ -1,6 +1,14 @@
 import './globals.css';
 import styles from './layout.module.css';
 import type {Metadata} from 'next';
+import {Inter} from 'next/font/google';
+import Header from './components/Header/Header';
+
+const inter = Inter({
+    subsets: ['latin', 'cyrillic'],
+    display: 'swap',
+    weight: ['400', '500', '600'],
+});
 
 export const metadata: Metadata = {
     title: 'TravelTrucks – Camper rentals',
@@ -10,8 +18,8 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-        <body suppressHydrationWarning>
-        <header className={styles.header}>TravelTrucks</header>
+        <body className={inter.className} suppressHydrationWarning>
+        <Header/>
         <main className={styles.main}>{children}</main>
         </body>
         </html>

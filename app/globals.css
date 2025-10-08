@@ -1,14 +1,28 @@
 :root {
-    --primary: #E44848;
-    --primary-hover: #D84343;
-    --text: #101828;
-    --muted: #475467;
-    --bg: #FFFFFF;
-    --surface: #F9FAFB;
-    --border: #EAECF0;
+    /* из Inspect Styles */
+    --main: #101828;
+    --text: #475467;
+    --white: #fff;
+    --inputs: #F7F7F7;
+    --badges: #F2F4F7;
+    --gray: #667085; /* универсальный нейтральный */
+    --gray-light: #EAECF0; /* бордеры */
+    --button: #E44848;
+    --button-hover: #D84343;
+    --rating: #FFC531;
+
+    /* переходные алиасы, чтобы ничего не сломать прямо сейчас */
+    --bg: var(--white);
+    --surface: var(--badges);
+    --border: var(--gray-light);
+    --primary: var(--button);
+    --primary-hover: var(--button-hover);
+    --muted: var(--text);
+
     --radius: 16px;
 }
 
+/* базовые стили оставь как были, но на новых переменных */
 * {
     box-sizing: border-box
 }
@@ -19,13 +33,8 @@ html, body {
 }
 
 body {
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    color: var(--text);
+    color: var(--main);
     background: var(--bg)
-}
-
-main {
-    min-height: 100dvh
 }
 
 a {
@@ -42,20 +51,113 @@ button {
     cursor: pointer
 }
 
-/* простенька кнопка для Home CTA */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 12px 20px;
     border-radius: var(--radius);
-    background: var(--primary);
+    background: var(--button);
     color: #fff;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--button);
     transition: .2s
 }
 
 .btn:hover {
-    background: var(--primary-hover);
-    border-color: var(--primary-hover)
+    background: var(--button-hover);
+    border-color: var(--button-hover)
+}
+
+/* Reset and base styles  */
+* {
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Links */
+
+a, a:link, a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Common */
+
+aside, nav, footer, header, section, main {
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+ul, ul li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+img, svg {
+    max-width: 100%;
+    height: auto;
+}
+
+address {
+    font-style: normal;
+}
+
+/* Form */
+
+input, textarea, button, select {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+button, input[type="submit"] {
+    display: inline-block;
+    box-shadow: none;
+    background-color: transparent;
+    background: none;
+    cursor: pointer;
+}
+
+input:focus, input:active,
+button:focus, button:active {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+label {
+    cursor: pointer;
+}
+
+legend {
+    display: block;
+}
+
+input[type='file'] {
+    max-width: 100%;
 }
