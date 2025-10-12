@@ -1,14 +1,14 @@
 .layout {
     display: grid;
-    grid-template-columns:340px 1fr;
-    gap: 24px;
-    padding: 24px
+    grid-template-columns:360px 1fr;
+    gap: 64px;
+    padding: 48px 64px 52px;
 }
 
 .cards {
     display: grid;
     grid-template-columns:1fr;
-    gap: 16px
+    gap: 32px
 }
 
 .loadMoreWrap {

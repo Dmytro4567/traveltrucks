@@ -5,13 +5,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: url('/picture2x.jpg') center/cover no-repeat, linear-gradient(180deg, #00000066, #00000066)
-}
-
-.content {
-
-
-
+    background: url('/picture2x.jpg') center/cover no-repeat;
 }
 
 .content h1 {

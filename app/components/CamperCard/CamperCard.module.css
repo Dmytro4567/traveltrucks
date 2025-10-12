@@ -1,19 +1,20 @@
 .card {
     display: grid;
-    grid-template-columns:280px 1fr;
-    gap: 16px;
-    padding: 16px;
+    grid-template-columns: 292px 1fr;
+    gap: 24px;
+    padding: 24px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: #fff;
+    background: var(--white);
 }
 
 .media {
     position: relative;
+    height: 100%;
+    min-height: 200px;
     border-radius: 12px;
     overflow: hidden;
     background: #f2f4f7;
-    aspect-ratio: 4/3;
 }
 
 .img {
@@ -34,12 +35,45 @@
 }
 
 .header h3 {
-    margin: 0;
-    font-size: 20px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--main);
+}
+
+.priceWrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .price {
-    font-weight: 700;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--main);
+}
+
+.heartBtn {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+}
+
+.heartBtn:hover {
+    fill: var(--primary);
+}
+
+.heartBtn[aria-pressed="true"] {
+    border-color: var(--primary);
+}
+
+.heartIcon {
+    width: 24px;
+    height: 21px;
+    display: block;
 }
 
 .meta {
@@ -50,13 +84,51 @@
     font-size: 14px;
 }
 
-.desc {
-    margin: 0;
-    color: #344054;
-    line-height: 1.5;
-    max-height: 3.1em;
-    overflow: hidden;
+.loc {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--main);
 }
+
+.locIcon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    color: var(--main);
+    fill: currentColor;
+}
+
+.desc {
+    line-height: 150%;
+    color: var(--text);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    background: var(--badges);
+    border-radius: 999px;
+    line-height: 150%;
+    color: var(--main);
+}
+
+.tagIcon {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+}
+
 
 .actions {
     margin-top: auto;
@@ -66,16 +138,7 @@
 }
 
 .favBtn {
-    padding: 10px 14px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: #fff;
-}
-
-.favBtn[aria-pressed="true"] {
-    border-color: var(--primary);
-    color: var(--primary);
-    background: #FFF5F5;
+    display: none;
 }
 
 .more {
@@ -84,9 +147,15 @@
     background: var(--primary);
     color: #fff;
     border: 1px solid var(--primary);
+    transition: background .15s, border-color .15s, transform .05s;
 }
 
 .more:hover {
     background: var(--primary-hover);
     border-color: var(--primary-hover);
 }
+
+.more:active {
+    transform: translateY(1px);
+}
+

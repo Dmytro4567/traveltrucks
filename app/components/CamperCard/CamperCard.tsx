@@ -13,6 +13,13 @@ export default function CamperCard({item}: { item: Camper }) {
     const {city, country} = splitLocation(item.location);
     const cover = item.gallery?.[0]?.thumb || '/images/placeholder.jpg';
 
+    const tags: { id: string; label: string }[] = [];
+    if (item.transmission === 'automatic') tags.push({id: 'icon-diagram', label: 'Automatic'});
+    if (item.kitchen) tags.push({id: 'icon-cup-hot', label: 'Kitchen'});
+    if (item.TV) tags.push({id: 'icon-tv', label: 'TV'});
+    if (item.bathroom) tags.push({id: 'icon-ph_shower', label: 'Bathroom'});
+    if (item.AC) tags.push({id: 'icon-wind', label: 'AC'});
+
     return (
         <article className={styles.card}>
             <div className={styles.media}>
@@ -22,23 +29,56 @@ export default function CamperCard({item}: { item: Camper }) {
                     fill
                     className={styles.img}
                     sizes="(max-width: 1024px) 100vw, 280px"
-                    priority={false}
                 />
             </div>
+
             <div className={styles.body}>
                 <header className={styles.header}>
                     <h3>{item.name}</h3>
-                    <div className={styles.price}>€{priceToUi(item.price)}</div>
+                    <div className={styles.priceWrap}>
+                        <div className={styles.price}>€{priceToUi(item.price)}</div>
+                        <button
+                            type="button"
+                            className={styles.heartBtn}
+                            aria-pressed={fav}
+                            aria-label={fav ? 'Remove from favorites' : 'Add to favorites'}
+                            title={fav ? 'In favorites' : 'Add to favorites'}
+                            onClick={() => toggleFavorite(item.id)}
+                        >
+                            <svg className={styles.heartIcon} aria-hidden="true">
+                                <use href={`/sprite.svg#${fav ? 'icon-heartpressed' : 'icon-heart'}`}/>
+                            </svg>
+                        </button>
+                    </div>
                 </header>
+
                 <div className={styles.meta}>
-                    <RatingStars value={item.rating}/>
-                    <span>{city}, {country}</span>
+                    <RatingStars value={item.rating} reviews={item.reviews?.length ?? 0}/>
+                    <span className={styles.loc}>
+                         <svg className={styles.locIcon} aria-hidden="true">
+                             <use href="/sprite.svg#icon-bi_grid-1x2"/>
+                         </svg>
+                        {city}, {country}
+                    </span>
                 </div>
+
                 <p className={styles.desc}>{item.description}</p>
+
+                {tags.length > 0 && (
+                    <ul className={styles.tags} aria-label="features">
+                        {tags.map((t, i) => (
+                            <li key={i} className={styles.tag}>
+                                <svg className={styles.tagIcon} aria-hidden="true">
+                                    <use href={`/sprite.svg#${t.id}`}/>
+                                </svg>
+                                {t.label}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+
                 <div className={styles.actions}>
-                    <button className={styles.favBtn} onClick={() => toggleFavorite(item.id)} aria-pressed={fav}>
-                        {fav ? '♥ In favorites' : '♡ Add to favorites'}
-                    </button>
+                    {/* Кнопку избранного снизу убрали */}
                     <Link className={styles.more} href={`/catalog/${item.id}`}>Show more</Link>
                 </div>
             </div>

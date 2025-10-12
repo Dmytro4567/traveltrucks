@@ -1,61 +1,146 @@
 .wrapper {
     position: sticky;
-    top: 88px;
+    top: 112px;
     align-self: start;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    padding: 16px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: #fff
+    gap: 32px;
+    background: var(--white);
 }
 
-.box {
+.inputWrap {
+    position: relative
+}
+
+.label {
+    line-height: 150%;
+    color: var(--gray);
+}
+
+.input {
+    width: 100%;
+    height: 56px;
+    padding: 12px 12px 12px 46px;
+    border-radius: 12px;
+    background: var(--inputs);
+    outline: none;
+}
+
+.input:focus {
+    border-color: #cdd2db
+}
+
+.inputIcon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    opacity: .6;
+    pointer-events: none;
+}
+
+.group {
     display: flex;
     flex-direction: column;
     gap: 8px
 }
 
-.subTitle {
-    font-weight: 600
+.title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--text);
 }
 
-.pills {
+.subTitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--main);
+    margin-bottom: 24px;
+}
+
+
+/* Плитки с иконками (оборудование и тип кузова) */
+.tiles {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px
+    gap: 12px;
+    border-top: 1px solid var(--gray-light);
+    padding-top: 24px;
 }
 
-.pill, .pillActive {
-    padding: 10px 14px;
-    border-radius: 999px;
+
+.tile {
+    width: 112px;
+    height: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 10px;
     border: 1px solid var(--border);
-    background: #fff
+    border-radius: 12px;
+    background: #fff;
+    font-size: 14px;
+    transition: border-color .15s ease, box-shadow .15s ease, color .15s ease, background .15s ease;
 }
 
-.pillActive {
+.tile:hover {
+    border-color: #d6dae3
+}
+
+.tile:focus-visible {
+    outline: 2px solid #c8d7ff;
+    outline-offset: 2px
+}
+
+.tileActive {
     border-color: var(--primary);
     color: var(--primary);
-    background: #FFF5F5
+    background: #FFF5F5;
+    box-shadow: 0 0 0 3px rgba(228, 72, 72, .12) inset;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap: 8px
+.icon {
+    width: 32px;
+    height: 32px
 }
 
+/* Чекбоксы-тайлы (если часть фич ты оставляешь чекбоксами) */
 .check {
     display: flex;
     gap: 8px;
     align-items: center;
-    padding: 8px 10px;
+    padding: 10px 12px;
     border: 1px solid var(--border);
-    border-radius: 12px
+    border-radius: 12px;
+    background: #fff;
 }
 
-/* IMPORTANT: scope element selectors with a local class (CSS Modules purity) */
+.check input {
+    accent-color: var(--primary)
+}
+
+/* Кнопка поиска */
+.searchBtn {
+    margin-top: 6px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--primary);
+    color: #fff;
+    border: 1px solid var(--primary);
+    transition: background .15s ease, border-color .15s ease;
+}
+
+.searchBtn:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover)
+}
+
+/* Чистим глобальные селекторы: скоупим элементные селекторы локальным классом */
 .wrapper input[type="text"],
 .wrapper input[type="search"],
 .wrapper input[type="date"],
@@ -63,19 +148,23 @@
     padding: 10px 12px;
     border: 1px solid var(--border);
     border-radius: 12px;
-    outline: none
+    outline: none;
 }
 
-.searchBtn {
-    margin-top: 4px;
-    padding: 12px 14px;
-    border-radius: 12px;
-    background: var(--primary);
-    color: #fff;
-    border: 1px solid var(--primary)
+/* Адаптив — на узких экранах делаем по 2 тайла в ряд */
+@media (max-width: 1024px) {
+    .tiles3 {
+        grid-template-columns:repeat(2, minmax(0, 1fr))
+    }
 }
 
-.searchBtn:hover {
-    background: var(--primary-hover);
-    border-color: var(--primary-hover)
+@media (max-width: 640px) {
+    .wrapper {
+        top: 12px;
+        padding: 16px
+    }
+
+    .tiles, .tiles3 {
+        grid-template-columns:1fr
+    }
 }
