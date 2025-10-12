@@ -1,20 +1,20 @@
 .wrap {
     display: flex;
     flex-direction: column;
-    gap: 12px
+    gap: 44px;
 }
 
 .tabs {
     display: flex;
-    gap: 12px;
-    border-bottom: 1px solid var(--border)
+    gap: 40px;
+    border-bottom: 1px solid var(--gray-light);
 }
 
 .tabs > button {
-    padding: 10px 12px;
+    padding-bottom: 24px;
     border: 0;
     background: transparent;
-    border-bottom: 2px solid transparent
+    border-bottom: 5px solid transparent
 }
 
 .tabs > button:hover {
@@ -22,8 +22,7 @@
 }
 
 .active {
-    color: var(--primary) !important;
-    border-bottom-color: var(--primary) !important
+    border-bottom-color: var(--primary) !important;
 }
 
 .panel {

@@ -1,52 +1,84 @@
 .form {
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 16px;
+    gap: 14px;
+    padding: 44px 57px;
     border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: #fff
+    border-radius: 16px;
+    background: var(--white);
 }
 
-.form h3 {
-    margin: 0 0 4px
+.title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--main);
 }
 
-.form label {
+.note {
+    margin: 0 0 8px;
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.field {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    font-size: 14px
 }
 
-.form input, .form textarea {
-    padding: 10px 12px;
-    border: 1px solid var(--border);
+.input {
+    height: 60px;
+    padding: 18px;
     border-radius: 12px;
-    outline: none
+    background: #F7F7F7;
+    outline: none;
+    line-height: 150%;
+    color: var(--gray);
 }
 
-.form textarea {
-    min-height: 96px;
-    resize: vertical
+.input::placeholder {
+    color: #98A2B3;
 }
 
-.form button {
-    margin-top: 6px;
-    padding: 12px 14px;
-    border-radius: 12px;
+.textarea {
+    min-height: 120px;
+    padding: 12px 16px;
+    resize: vertical;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 48px;
+    border-radius: 200px;
     background: var(--primary);
     color: #fff;
-    border: 1px solid var(--primary)
+    border: 1px solid var(--primary);
+    transition: background .15s, border-color .15s, transform .05s;
 }
 
-.form button:hover {
+.submit:hover {
     background: var(--primary-hover);
-    border-color: var(--primary-hover)
+    border-color: var(--primary-hover);
+}
+
+.submit:active {
+    transform: translateY(1px);
 }
 
 .ok {
-    margin: 6px 0 0;
+    margin: 10px 0 0;
     color: #067647;
-    font-weight: 600
+    font-weight: 600;
+    text-align: center;
 }

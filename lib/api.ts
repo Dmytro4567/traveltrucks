@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, {isAxiosError} from 'axios';
 
 export type QueryParams = Record<string, string | number | boolean | undefined>;
 
@@ -14,9 +14,25 @@ export const api = axios.create({
 });
 
 export async function fetchCampers(params: QueryParams) {
-    const {data} = await api.get('/campers', {params});
-    if (Array.isArray(data)) return {items: data, total: data.length} as const;
-    return {items: data.items ?? [], total: data.total ?? data.items?.length ?? 0} as const;
+    try {
+        const {data} = await api.get("/campers", {params});
+        if (Array.isArray(data)) {
+            return {items: data, total: data.length} as const;
+        }
+
+        const items = Array.isArray(data?.items) ? data.items : [];
+        const total =
+            typeof data?.total === "number"
+                ? data.total
+                : items.length;
+
+        return {items, total} as const;
+    } catch (err) {
+        if (isAxiosError(err) && err.response?.status === 404) {
+            return {items: [], total: 0} as const;
+        }
+        throw err;
+    }
 }
 
 export async function fetchCamperById(id: string) {

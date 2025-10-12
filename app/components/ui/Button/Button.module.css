@@ -2,7 +2,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 173px;
+    width: 200px;
     height: 56px;
     border-radius: 999px;
     font-weight: 500;
@@ -10,11 +10,12 @@
     text-decoration: none;
     cursor: pointer;
     transition: background .15s;
+
 }
 
 .primary {
     background: var(--button);
-    color: #fff;
+    color: var(--white);
 }
 
 .primary:hover {
@@ -23,19 +24,13 @@
 }
 
 .outline {
-    background: #fff;
+    background: var(--white);
     color: var(--main);
-    border-color: var(--gray-light);
-    box-shadow: 0 1px 0 rgba(16, 24, 40, .02);
+    border: 1px solid var(--gray-light);
+
 }
 
 .outline:hover {
-    color: var(--button);
-    border-color: var(--button);
-    background: var(--badges);
+    border: 1px solid var(--button-hover);
 }
 
-.btn:disabled {
-    opacity: .6;
-    cursor: not-allowed
-}

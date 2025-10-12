@@ -58,7 +58,7 @@ button {
     padding: 12px 20px;
     border-radius: var(--radius);
     background: var(--button);
-    color: #fff;
+    color: var(--white);
     border: 1px solid var(--button);
     transition: .2s
 }

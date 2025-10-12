@@ -1,8 +1,6 @@
 'use client';
 import styles from './BookingForm.module.css';
 import {useState} from 'react';
-import Button from "@/app/components/ui/Button/Button";
-
 
 export default function BookingForm({camperName}: { camperName: string }) {
     const [name, setName] = useState('');
@@ -11,27 +9,65 @@ export default function BookingForm({camperName}: { camperName: string }) {
     const [note, setNote] = useState('');
     const [ok, setOk] = useState<string>('');
 
-
-    const onSubmit = async (e: React.FormEvent) => {
+    const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-// Імітуємо успішну бронь (за ТЗ достатньо нотифікації)
-        setOk(`🎉 Booking request sent for "${camperName}" on ${date}. We\'ll contact you at ${email}.`);
+        setOk(`🎉 Booking request sent for "${camperName}" on ${date}. We'll contact you at ${email}.`);
         setName('');
         setEmail('');
         setDate('');
         setNote('');
     };
 
-
     return (
         <form className={styles.form} onSubmit={onSubmit}>
-            <h3>Book your camper now</h3>
-            <label>Name<input value={name} onChange={e => setName(e.target.value)} required/></label>
-            <label>Email<input type="email" value={email} onChange={e => setEmail(e.target.value)} required/></label>
-            <label>Booking date<input type="date" value={date} onChange={e => setDate(e.target.value)}
-                                      required/></label>
-            <label>Comment<textarea value={note} onChange={e => setNote(e.target.value)}/></label>
-            <Button type="submit">Send</Button>
+            <h3 className={styles.title}>Book your campervan now</h3>
+            <p className={styles.note}>Stay connected! We are always ready to help you.</p>
+
+            <label className={styles.field}>
+                <input
+                    className={styles.input}
+                    placeholder="Name*"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+            </label>
+
+            <label className={styles.field}>
+                <input
+                    className={styles.input}
+                    type="email"
+                    placeholder="Email*"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+            </label>
+
+            <label className={styles.field}>
+                <input
+                    className={styles.input}
+                    type="date"
+                    placeholder="Booking date*"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    required
+                />
+            </label>
+
+            <label className={styles.field}>
+        <textarea
+            className={`${styles.input} ${styles.textarea}`}
+            placeholder="Comment"
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+        />
+            </label>
+
+            <div className={styles.actions}>
+                <button type="submit" className={styles.submit}>Send</button>
+            </div>
+
             {ok && <p className={styles.ok}>{ok}</p>}
         </form>
     );

@@ -1,50 +1,174 @@
 .wrap {
-    padding: 24px;
-    max-width: 1200px;
-    margin: 0 auto
+    margin: 0 auto;
+    padding: 48px 64px 80px;
 }
 
 .title {
-    margin: 0 0 8px
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--main);
+    margin: 0 0 8px;
+}
+
+/* meta: рейтинг + локация */
+.metaBar {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
 .location {
-    opacity: .8;
-    margin-bottom: 16px
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    line-height: 150%;
+    color: var(--main);
 }
 
+.locIcon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    color: var(--main);
+    fill: currentColor;
+}
+
+/* price */
 .price {
     font-weight: 600;
-    margin-bottom: 24px
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--main);
+    margin: 0 0 24px;
 }
 
+/* gallery */
 .gallery {
     display: grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap: 8px;
-    margin-bottom: 24px
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
 }
 
 .galleryImg {
-    object-fit: cover;
     width: 100%;
-    height: 200px
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #f2f4f7;
 }
 
+/* description */
 .desc {
-    margin: 0 0 24px
+    margin-bottom: 32px;
+    line-height: 150%;
+    color: var(--text);
 }
 
+/* content: tabs + booking form on the right */
 .content {
     display: grid;
-    grid-template-columns:2fr 1fr;
-    gap: 24px
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
 }
 
+/* ===== Features panel (вкладка) ===== */
+
+.featuresPanel {
+    padding: 44px 52px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--inputs);
+}
+
+/* серые бейджи-капсулы */
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: var(--badges);
+    color: var(--main);
+    line-height: 150%;
+}
+
+.badgeIcon {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+}
+
+/* заголовок секции Vehicle details */
+.detailsTitle {
+    margin: 0 0 12px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--main);
+}
+
+/* список характеристик в 2 колонки */
+.details {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.dl {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 24px;
+    row-gap: 16px;
+    margin: 0;
+}
+
+.dl dt {
+    color: #475467;
+}
+
+.dl dd {
+    margin: 0;
+    color: var(--main);
+    text-align: right;
+}
+
+/* ===== Reviews ===== */
+
 .reviewItem {
-    margin-bottom: 12px
+    margin-bottom: 12px;
 }
 
 .reviewAuthor {
-    font-weight: 600
+    font-weight: 600;
 }
+
+/* ===== Adaptive ===== */
+
+@media (max-width: 1024px) {
+    .wrap {
+        padding: 32px 24px 56px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+    }
+}
+
+

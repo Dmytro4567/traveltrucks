@@ -1,10 +1,9 @@
 'use client';
 
 import styles from './Filters.module.css';
-import { useCampersStore } from '@/store/useCampersStore';
-import type { BodyType, FiltersState } from '@/lib/types';
+import {useCampersStore} from '@/store/useCampersStore';
+import type {BodyType, FiltersState} from '@/lib/types';
 
-/** Фикс TS7053: узкий тип без '' для индексации словаря */
 const BODY_FORMS = ['panelTruck', 'fullyIntegrated', 'alcove'] as const;
 type FormKey = typeof BODY_FORMS[number];
 
@@ -33,7 +32,7 @@ function Tile({
             aria-pressed={active}
         >
             <svg className={styles.icon} aria-hidden="true">
-                <use href={`/sprite.svg#${id}`} />
+                <use href={`/sprite.svg#${id}`}/>
             </svg>
             <span>{label}</span>
         </button>
@@ -41,20 +40,20 @@ function Tile({
 }
 
 export default function Filters() {
-    const { filters, setFilters, resetAndFetch } = useCampersStore();
+    const {filters, setFilters, resetAndFetch} = useCampersStore();
 
     const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        void setFilters((prev) => ({ ...prev, [name]: value } as FiltersState));
+        const {name, value} = e.target;
+        void setFilters((prev) => ({...prev, [name]: value} as FiltersState));
     };
 
     const onSelectForm = (form: BodyType) =>
-        void setFilters((p) => ({ ...p, form }));
+        void setFilters((p) => ({...p, form}));
 
     const onToggleFeat = (key: keyof FiltersState['features']) =>
         void setFilters((p) => ({
             ...p,
-            features: { ...p.features, [key]: !p.features[key] },
+            features: {...p.features, [key]: !p.features[key]},
         }));
 
     const iconForForm = (form: FormKey) =>
@@ -66,12 +65,11 @@ export default function Filters() {
 
     return (
         <aside className={styles.wrapper} aria-labelledby="filtersTitle">
-            {/* Location */}
             <div className={styles.group}>
                 <div className={styles.label}>Location</div>
                 <div className={styles.inputWrap}>
                     <svg className={styles.inputIcon} aria-hidden="true">
-                        <use href="/sprite.svg#icon-bi_grid-1x2" />
+                        <use href="/sprite.svg#icon-bi_grid-1x2"/>
                     </svg>
                     <input
                         name="location"
@@ -84,8 +82,6 @@ export default function Filters() {
             </div>
 
             <div className={styles.title} id="filtersTitle">Filters</div>
-
-            {/* Vehicle equipment — ровно 5 плиток из макета */}
             <div className={styles.group}>
                 <div className={styles.subTitle}>Vehicle equipment</div>
                 <div className={styles.tiles}>
@@ -122,7 +118,6 @@ export default function Filters() {
                 </div>
             </div>
 
-            {/* Vehicle type */}
             <div className={styles.group}>
                 <div className={styles.subTitle}>Vehicle type</div>
                 <div className={styles.tiles}>

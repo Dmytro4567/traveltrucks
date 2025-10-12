@@ -2,16 +2,15 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 14px;
-    line-height: 1;
-    color: #475467;
+    line-height: 150%;
+    color: var(--main);
 }
 
 .icon {
     width: 16px;
     height: 16px;
     display: inline-block;
-    color: #FFC531;
+    color: var(--main);
 }
 
 .value {

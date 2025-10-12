@@ -81,7 +81,6 @@
     gap: 12px;
     align-items: center;
     color: var(--muted);
-    font-size: 14px;
 }
 
 .loc {
@@ -142,10 +141,14 @@
 }
 
 .more {
-    padding: 10px 14px;
-    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 166px;
+    height: 56px;
+    border-radius: 200px;
     background: var(--primary);
-    color: #fff;
+    color: var(--white);
     border: 1px solid var(--primary);
     transition: background .15s, border-color .15s, transform .05s;
 }
