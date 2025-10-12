@@ -131,7 +131,6 @@ export default function Filters() {
                             onClick={() => onSelectForm(form)}
                         />
                     ))}
-                    {/* «Any» сбрасывает форму в пустую строку */}
                     <Tile
                         id="icon-bi_grid-1x2"
                         label="Any"

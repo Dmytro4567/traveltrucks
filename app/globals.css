@@ -1,17 +1,16 @@
 :root {
-    /* из Inspect Styles */
     --main: #101828;
     --text: #475467;
     --white: #fff;
     --inputs: #F7F7F7;
     --badges: #F2F4F7;
-    --gray: #667085; /* универсальный нейтральный */
-    --gray-light: #EAECF0; /* бордеры */
+    --gray: #667085;
+    --gray-light: #EAECF0;
     --button: #E44848;
     --button-hover: #D84343;
     --rating: #FFC531;
 
-    /* переходные алиасы, чтобы ничего не сломать прямо сейчас */
+
     --bg: var(--white);
     --surface: var(--badges);
     --border: var(--gray-light);
@@ -22,7 +21,6 @@
     --radius: 16px;
 }
 
-/* базовые стили оставь как были, но на новых переменных */
 * {
     box-sizing: border-box
 }

@@ -12,7 +12,6 @@ export default async function CamperDetails({params}: { params: { id: string } }
     const {city, country} = splitLocation(camper.location);
     const reviewsCount = camper.reviews?.length ?? 0;
 
-    // хелпер для красивой метки формы
     const formLabel =
         camper.form === 'panelTruck'
             ? 'Panel truck'
@@ -23,8 +22,6 @@ export default async function CamperDetails({params}: { params: { id: string } }
     return (
         <div className={styles.wrap}>
             <h1 className={styles.title}>{camper.name}</h1>
-
-            {/* рейтинг + локация */}
             <div className={styles.metaBar}>
                 <RatingStars value={camper.rating} reviews={reviewsCount}/>
                 <span className={styles.location}>
@@ -34,10 +31,7 @@ export default async function CamperDetails({params}: { params: { id: string } }
                     {city}, {country}
         </span>
             </div>
-
             <div className={styles.price}>€{priceToUi(camper.price)}</div>
-
-            {/* галерея */}
             <div className={styles.gallery}>
                 {(camper.gallery ?? []).slice(0, 4).map((g: GalleryItem, i: number) => (
                     <Image
@@ -53,12 +47,10 @@ export default async function CamperDetails({params}: { params: { id: string } }
 
             <p className={styles.desc}>{camper.description}</p>
 
-            {/* вкладки + форма */}
             <div className={styles.content}>
                 <Tabs
                     features={
                         <section className={styles.featuresPanel}>
-                            {/* бейджи сверху */}
                             <ul className={styles.badges}>
                                 {camper.transmission === 'automatic' && (
                                     <li className={styles.badge}>
@@ -79,7 +71,6 @@ export default async function CamperDetails({params}: { params: { id: string } }
                                 {camper.engine && (
                                     <li className={styles.badge}>
                                         <svg className={styles.badgeIcon} aria-hidden="true">
-                                            {/* замените id на нужную иконку топлива, если есть в спрайте */}
                                             <use href="/sprite.svg#icon-bi_grid"/>
                                         </svg>
                                         {camper.engine.charAt(0).toUpperCase() + camper.engine.slice(1)}
@@ -103,7 +94,6 @@ export default async function CamperDetails({params}: { params: { id: string } }
                                 )}
                             </ul>
 
-                            {/* Vehicle details */}
                             <h4 className={styles.detailsTitle}>Vehicle details</h4>
                             <div className={styles.details}>
                                 <dl className={styles.dl}>
@@ -174,7 +164,6 @@ export default async function CamperDetails({params}: { params: { id: string } }
                                                     ))}
                                                 </div>
                                             </div>
-
                                             <p className={styles.reviewText}>{r.comment}</p>
                                         </div>
                                     </article>
@@ -183,7 +172,6 @@ export default async function CamperDetails({params}: { params: { id: string } }
                         </div>
                     }
                 />
-
                 <BookingForm camperName={camper.name}/>
             </div>
         </div>

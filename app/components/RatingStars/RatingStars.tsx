@@ -4,10 +4,10 @@ import styles from "./RatingStars.module.css";
 type Review = { reviewer_name: string; reviewer_rating: number; comment: string };
 
 type Props = {
-    value: number;                   // 4.4
-    reviews: number | Review[];      // 2 ИЛИ массив отзывов из бэка
-    spriteUrl?: string;              // путь к спрайту, по умолчанию "/sprite.svg"
-    starSymbolId?: string;           // id символа звезды в спрайте
+    value: number;
+    reviews: number | Review[];
+    spriteUrl?: string;
+    starSymbolId?: string;
     className?: string;
 };
 

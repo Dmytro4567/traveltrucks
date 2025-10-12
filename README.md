@@ -1,19 +1,20 @@
 # TravelTrucks
 
-Frontend (Next.js + TS) для сервісу оренди кемперів.
+Frontend (Next.js + TS) for a camper rental service.
 
-## Функції
+## Features
 
-- Домашня сторінка з банером
-- Каталог з фільтрами (бекенд-фільтрація), пагінацією (Load more), додаванням в обране
-- Сторінка деталей з галереєю, вкладками **Features/Reviews**, формою бронювання
+* Home page with banner
+* Catalog with filters (backend filtering), pagination (Load more), and favorites
+* Camper details page with gallery, **Features/Reviews** tabs, and booking form
 
-## Технології
+## Technologies
 
-Next.js (App Router), TypeScript, Zustand, Axios, CSS Modules
+Next.js, TypeScript, Zustand, Axios, CSS Modules
 
-## Запуск
+## Launch
 
 ```bash
-pnpm i
-pnpm dev
+npm install
+npm run dev
+```

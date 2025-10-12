@@ -60,7 +60,7 @@ export const useCampersStore = create<State & Actions>((set, get) => ({
             const params: QueryParams = {
                 page: 1,
                 limit,
-                ...filtersToQuery(filters), // ← собираем корректные параметры
+                ...filtersToQuery(filters),
             };
 
             const { items, total } = await fetchCampers(params);

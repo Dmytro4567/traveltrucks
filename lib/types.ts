@@ -1,14 +1,6 @@
-export type CamperFeatureKey =
-    | 'transmission' | 'engine'
-    | 'AC' | 'bathroom' | 'kitchen' | 'TV' | 'radio'
-    | 'refrigerator' | 'microwave' | 'gas' | 'water';
-
-export type CamperDetailsKey =
-    | 'form' | 'length' | 'width' | 'height' | 'tank' | 'consumption';
-
 export interface Review {
     reviewer_name: string;
-    reviewer_rating: number; // 1..5
+    reviewer_rating: number;
     comment: string;
 }
 
@@ -48,14 +40,9 @@ export interface Camper {
     reviews?: Review[];
 }
 
-export interface ApiListResponse<T> {
-    total?: number;
-    items?: T[];
-}
 
 export type BodyType = 'alcove' | 'panelTruck' | 'fullyIntegrated' | '';
 
-export type EquipmentFilterKey = 'AC' | 'kitchen' | 'bathroom' | 'TV' | 'automatic';
 
 export interface FiltersState {
     location: string;
@@ -65,25 +52,11 @@ export interface FiltersState {
         kitchen: boolean;
         bathroom: boolean;
         TV: boolean;
-        /** UI-флаг: если true — передаём transmission=automatic */
         automatic: boolean;
     };
 }
 
 export type QueryParams = Record<string, string | number | boolean | undefined>;
-
-
-export const FEATURE_TO_API: Record<
-    EquipmentFilterKey,
-    | { key: keyof Camper; value: true }
-    | { key: 'transmission'; value: 'automatic' }
-> = {
-    AC: {key: 'AC', value: true},
-    kitchen: {key: 'kitchen', value: true},
-    bathroom: {key: 'bathroom', value: true},
-    TV: {key: 'TV', value: true},
-    automatic: {key: 'transmission', value: 'automatic'},
-};
 
 
 
@@ -97,8 +70,6 @@ export function filtersToQuery(f: FiltersState): QueryParams {
     if (kitchen) q.kitchen = true;
     if (bathroom) q.bathroom = true;
     if (TV) q.TV = true;
-
-    // особый случай: backend ждёт transmission=automatic
     if (automatic) q.transmission = 'automatic';
 
     return q;
