@@ -16,5 +16,5 @@
 }
 
 .error {
-    color: crimson
+    color: var(--primary);
 }

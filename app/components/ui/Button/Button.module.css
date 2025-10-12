@@ -2,7 +2,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 200px;
+    min-width: 200px;
     height: 56px;
     border-radius: 999px;
     font-weight: 500;
@@ -11,6 +11,11 @@
     cursor: pointer;
     transition: background .15s;
 
+}
+
+.full {
+    width: 100%;
+    min-width: 0;
 }
 
 .primary {

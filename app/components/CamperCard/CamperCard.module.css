@@ -140,25 +140,4 @@
     display: none;
 }
 
-.more {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 166px;
-    height: 56px;
-    border-radius: 200px;
-    background: var(--primary);
-    color: var(--white);
-    border: 1px solid var(--primary);
-    transition: background .15s, border-color .15s, transform .05s;
-}
-
-.more:hover {
-    background: var(--primary-hover);
-    border-color: var(--primary-hover);
-}
-
-.more:active {
-    transform: translateY(1px);
-}
 

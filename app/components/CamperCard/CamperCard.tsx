@@ -1,11 +1,11 @@
 'use client';
-import Link from 'next/link';
 import Image from 'next/image';
 import styles from './CamperCard.module.css';
 import {Camper} from '@/lib/types';
 import RatingStars from '@/app/components/RatingStars/RatingStars';
 import {priceToUi, splitLocation} from '@/lib/format';
 import {useCampersStore} from '@/store/useCampersStore';
+import Button from '@/app/components/ui/Button/Button'; // ← добавили
 
 export default function CamperCard({item}: { item: Camper }) {
     const {toggleFavorite, favorites} = useCampersStore();
@@ -55,11 +55,11 @@ export default function CamperCard({item}: { item: Camper }) {
                 <div className={styles.meta}>
                     <RatingStars value={item.rating} reviews={item.reviews?.length ?? 0}/>
                     <span className={styles.loc}>
-                         <svg className={styles.locIcon} aria-hidden="true">
-                             <use href="/sprite.svg#icon-bi_grid-1x2"/>
-                         </svg>
+            <svg className={styles.locIcon} aria-hidden="true">
+              <use href="/sprite.svg#icon-bi_grid-1x2"/>
+            </svg>
                         {city}, {country}
-                    </span>
+          </span>
                 </div>
 
                 <p className={styles.desc}>{item.description}</p>
@@ -78,8 +78,9 @@ export default function CamperCard({item}: { item: Camper }) {
                 )}
 
                 <div className={styles.actions}>
-                    {/* Кнопку избранного снизу убрали */}
-                    <Link className={styles.more} href={`/catalog/${item.id}`}>Show more</Link>
+                    <Button href={`/catalog/${item.id}`} variant="primary">
+                        Show more
+                    </Button>
                 </div>
             </div>
         </article>

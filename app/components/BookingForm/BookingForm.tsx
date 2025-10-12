@@ -1,6 +1,7 @@
 'use client';
 import styles from './BookingForm.module.css';
 import {useState} from 'react';
+import Button from '@/app/components/ui/Button/Button';
 
 export default function BookingForm({camperName}: { camperName: string }) {
     const [name, setName] = useState('');
@@ -11,7 +12,9 @@ export default function BookingForm({camperName}: { camperName: string }) {
 
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setOk(`🎉 Booking request sent for "${camperName}" on ${date}. We'll contact you at ${email}.`);
+        setOk(
+            `Booking request sent for "${camperName}" on ${date}. We'll contact you at ${email}.`
+        );
         setName('');
         setEmail('');
         setDate('');
@@ -65,7 +68,7 @@ export default function BookingForm({camperName}: { camperName: string }) {
             </label>
 
             <div className={styles.actions}>
-                <button type="submit" className={styles.submit}>Send</button>
+                <Button variant="primary" type="submit">Send</Button>
             </div>
 
             {ok && <p className={styles.ok}>{ok}</p>}

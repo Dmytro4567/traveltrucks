@@ -119,29 +119,3 @@
     accent-color: var(--primary)
 }
 
-.searchBtn {
-    height: 56px;
-    margin-top: 6px;
-    padding: 12px 14px;
-    border-radius: 200px;
-    background: var(--primary);
-    color: var(--white);
-    border: 1px solid var(--primary);
-    transition: background .15s ease, border-color .15s ease;
-}
-
-.searchBtn:hover {
-    background: var(--primary-hover);
-    border-color: var(--primary-hover)
-}
-
-.wrapper input[type="text"],
-.wrapper input[type="search"],
-.wrapper input[type="date"],
-.wrapper textarea {
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    outline: none;
-}
-

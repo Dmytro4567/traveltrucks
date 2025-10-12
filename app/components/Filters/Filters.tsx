@@ -3,6 +3,7 @@
 import styles from './Filters.module.css';
 import {useCampersStore} from '@/store/useCampersStore';
 import type {BodyType, FiltersState} from '@/lib/types';
+import Button from "@/app/components/ui/Button/Button";
 
 const BODY_FORMS = ['panelTruck', 'fullyIntegrated', 'alcove'] as const;
 type FormKey = typeof BODY_FORMS[number];
@@ -140,9 +141,9 @@ export default function Filters() {
                 </div>
             </div>
 
-            <button className={styles.searchBtn} onClick={() => resetAndFetch()}>
+            <Button variant="primary" onClick={() => resetAndFetch()}>
                 Search
-            </button>
+            </Button>
         </aside>
     );
 }
