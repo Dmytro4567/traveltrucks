@@ -79,7 +79,7 @@ export default async function CamperDetails({params}: { params: { id: string } }
                                 {camper.engine && (
                                     <li className={styles.badge}>
                                         <svg className={styles.badgeIcon} aria-hidden="true">
-                                            {/* при желании замени на свой id иконки топлива */}
+                                            {/* замените id на нужную иконку топлива, если есть в спрайте */}
                                             <use href="/sprite.svg#icon-bi_grid"/>
                                         </svg>
                                         {camper.engine.charAt(0).toUpperCase() + camper.engine.slice(1)}
@@ -145,17 +145,41 @@ export default async function CamperDetails({params}: { params: { id: string } }
                         </section>
                     }
                     reviews={
-                        <div>
-                            <h3>Reviews</h3>
-                            <ul>
-                                {(camper.reviews ?? []).map((r: Review, i: number) => (
-                                    <li key={i} className={styles.reviewItem}>
-                                        <div className={styles.reviewAuthor}>{r.reviewer_name}</div>
-                                        <div>Rating: {r.reviewer_rating} / 5</div>
-                                        <p>{r.comment}</p>
-                                    </li>
-                                ))}
-                            </ul>
+                        <div className={styles.reviews}>
+                            {(camper.reviews ?? []).map((r: Review, i: number) => {
+                                const initial = r.reviewer_name?.[0]?.toUpperCase() ?? '•';
+                                const filled = Math.round(r.reviewer_rating);
+
+                                return (
+                                    <article key={i} className={styles.review}>
+                                        <div className={styles.avatar} aria-hidden="true">
+                                            {initial}
+                                        </div>
+
+                                        <div className={styles.reviewBody}>
+                                            <div className={styles.reviewHead}>
+                                                <div className={styles.reviewName}>{r.reviewer_name}</div>
+                                                <div
+                                                    className={styles.reviewStars}
+                                                    aria-label={`Rating ${r.reviewer_rating} of 5`}
+                                                >
+                                                    {Array.from({length: 5}).map((_, idx) => (
+                                                        <svg key={idx} className={styles.starSm} aria-hidden="true">
+                                                            <use
+                                                                href={`/sprite.svg#${
+                                                                    idx < filled ? 'icon-starPressed' : 'icon-star'
+                                                                }`}
+                                                            />
+                                                        </svg>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            <p className={styles.reviewText}>{r.comment}</p>
+                                        </div>
+                                    </article>
+                                );
+                            })}
                         </div>
                     }
                 />
